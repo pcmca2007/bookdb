@@ -10,11 +10,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.hibernate.annotations.Cascade;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -24,9 +29,13 @@ public class Customer implements Serializable {
 
 @Id
 @GeneratedValue(strategy=GenerationType.AUTO)
-private int customerId;	
+private int customerId;
+
+@NotEmpty
 private String customerName;
+@NotEmpty
 private String customerEmail;
+@NotEmpty
 private String customerPhone;
 
 @OneToOne(cascade=CascadeType.ALL)

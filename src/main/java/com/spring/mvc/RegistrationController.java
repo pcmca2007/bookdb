@@ -56,25 +56,30 @@ public class RegistrationController {
 	//to Insert data
 	
 	@RequestMapping(value="/customer/registration",method=RequestMethod.POST)
-	public String registerCustomer(@Valid @ModelAttribute(value="customer") Customer customer,Model model,BindingResult result){
+	public String registerCustomer(@Valid @ModelAttribute(value="customer") Customer customer,BindingResult result, Model model){
 		
 						if(result.hasErrors())
-							return "registerCustomer";
+							return "registrationCustomer";
 						
 						List<Customer> customerList=customerServices.getAllCustomers();
 						
 						for(Customer c :customerList){
+							
+							
 							
 							if(customer.getUsers().getUsername().equals(c.getUsers().getUsername())){
 								
 								model.addAttribute("DuplicateUName", "<span style=\"color:red\">"+"UserName Already Exists"+"</span>");
 								return"registrationCustomer";
 							}
+							
+							
 							if(customer.getUsers().getUsername().equals(c.getUsers().getUsername())){
 								
 								model.addAttribute("DuplicateEmail", "<span style=\"color:red\">" +"This EmailId Already Exists"+"</span>");
 								return"registrationCustomer";
 							}
+							
 						}
 						
 						customerServices.addCustomer(customer);

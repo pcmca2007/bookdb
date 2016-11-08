@@ -30,12 +30,15 @@ public class Book implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int isbn;
+	
 	@NotEmpty(message="Title Is Mendatory")
 	private String title;
 	
 	@NotEmpty(message="Publication Is Mendatory")
 	@Column(name="publisher")
 	private String publication;
+	
+	@NotEmpty(message="Author Is Mendatory")
 	private String author;
 	
 	@Min(value=100,message="Minimum Value Should Not Be Less Than 100")

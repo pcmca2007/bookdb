@@ -136,6 +136,7 @@
 									<tr>
 										<td><form:label path="author">AUTHOR</form:label></td>
 										<td><form:input path="author"></form:input></td>
+										<td><form:errors path="author"></form:errors>
 									</tr>
 									
 									<tr><td><form:label path="bookImage"></form:label></td>

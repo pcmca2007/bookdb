@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="/WEB-INF/views/header.jsp" %>
 <%@ page isELIgnored="false" %>
 
@@ -9,7 +10,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width , initial-scale-1">
-<title>Megabyte Technology</title>
+<title>Dev Darshan</title>
 
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
@@ -112,18 +113,22 @@
 			<div class="container">
 			<c:url value="/customer/registration"  var="url"></c:url>
             <form:form action="${url}" class="form-horizontal" method="post" commandName="customer">
+            
                 <h2>Registration Form</h2>
+                
                 <div class="form-group">
                     <label for="firstName" class="col-sm-3 control-label">Full Name</label>
-                    <form:errors path="customerName" cssClass="error"></form:errors>
+                    <font color = "red"><form:errors path="customerName" cssclass="error" ></form:errors></font>
                     <div class="col-sm-9">
                         <form:input path="customerName" class="form-control"></form:input>
                         <span class="help-block">Last Name, First Name, eg.: Smith, Harry</span>
                     </div>
                 </div>
+               
+                
                 <div class="form-group">
                     <label for="email" class="col-sm-3 control-label">Email</label>
-                    <form:errors path="customerEmail" cssClass="error"></form:errors>
+                   <font color="red"><form:errors path="customerEmail" cssClass="error"></form:errors></font>
                     <div class="col-sm-9">
                         <form:input path="customerEmail" class="form-control"></form:input>
                     </div>
@@ -139,13 +144,14 @@
                 
                 <div class="form-group">
                     <label for="phone" class="col-sm-3 control-label">Phone</label>
+                   <font color="red"><form:errors path="customerPhone" cssClass="error" ></form:errors></font> 
                     <div class="col-sm-9">
                         <form:input path="customerPhone"  class="form-control"></form:input>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="username" class="col-sm-3 control-label">UserName</label>
-                    <form:errors path="users.username"></form:errors>
+                    <form:errors path="users.username" cssClass="error"></form:errors>
                     <div class="col-sm-9">
                         <form:input path="users.username" class="form-control"></form:input>
                     </div>
@@ -161,9 +167,9 @@
                 
                 <div class="form-group">
                     <label for="password" class="col-sm-3 control-label">Password</label>
-                    <form:errors path="users.password"></form:errors>
+                    <form:errors path="users.password" cssClass="error"></form:errors>
                     <div class="col-sm-9">
-                       	<form:input path="users.password" class="form-control" /> 
+                       	<form:input path="users.password" type="password" class="form-control" /> 
                     </div>
                 </div> <!-- /.form-group -->
                 
@@ -257,19 +263,11 @@
                     </div>
                 </div>
                     
-                <div class="form-group">
-                    <div class="col-sm-9 col-sm-offset-3">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox">I accept <a href="#">terms</a>
-                            </label>
-                        </div>
-                    </div>
-                </div> <!-- /.form-group -->
+                
                 <div class="form-group">
                     <div class="col-sm-9 col-sm-offset-3">
                         <button type="submit" class="btn btn-primary btn-block">Register</button>
-                        <a href="<c:url value="/" />" class="btnbtn-default">Cancel</a>
+                     <div align="center"><a href="<c:url value="/" />" class="btnbtn-default" >Cancel</a></div>
                     </div>
                 </div>
             </form:form> <!-- /form -->

@@ -128,8 +128,10 @@
 		<th width="120" style="text-align:center;font-weight:bold;">PUBLISHER</th>
 		<th width="120" style="text-align:center;font-weight:bold;">AUTHOR</th>
 		<th width="80" style="text-align:center;font-weight:bold;">PRICE</th>
-		<th width="90" style="text-align:center;font-weight:bold;">Edit</th>
-		<th width="90" style="text-align:center;font-weight:bold;">Delete</th>
+		<security:authorize access="hasRole('ROLE_ADMIN')">
+			<th width="90" style="text-align:center;font-weight:bold;">Edit</th>
+			<th width="90" style="text-align:center;font-weight:bold;">Delete</th>
+		</security:authorize>
 	</tr>
 	
 	
@@ -140,9 +142,10 @@
 			<td align="center">${bookObj.publication}</td>
 			<td align="center">${bookObj.author}</td>
 			<td align="center">${bookObj.price}</td>
-			<td align="center"><a href="<c:url value='/edit/${bookObj.isbn}' />" ><span class="glyphicon glyphicon-edit"></span>&nbsp;Edit</a></td>
-			<td align="center"><a href="<c:url value='/remove/${bookObj.isbn}' />" ><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</a></td>
-			
+			<security:authorize access="hasRole('ROLE_ADMIN')">
+				<td align="center"><a href="<c:url value='/edit/${bookObj.isbn}' />" ><span class="glyphicon glyphicon-edit"></span>&nbsp;Edit</a></td>
+				<td align="center"><a href="<c:url value='/remove/${bookObj.isbn}' />" ><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</a></td>
+			</security:authorize>
 		</tr>
 		<tr></tr>
 		<tr>
